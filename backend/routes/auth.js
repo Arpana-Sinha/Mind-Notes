@@ -6,7 +6,6 @@ const User = require('../models/User');
 const router = express.Router();
 const SALT_ROUNDS = 10;
 
-// POST /api/auth/register
 router.post('/register', async (req, res) => {
   try {
     const { email, password, username } = req.body;
@@ -27,7 +26,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;

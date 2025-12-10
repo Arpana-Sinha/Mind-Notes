@@ -8,7 +8,6 @@ module.exports = function (req, res, next) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // attach user id to req
     req.user = { id: decoded.id };
     next();
   } catch (err) {

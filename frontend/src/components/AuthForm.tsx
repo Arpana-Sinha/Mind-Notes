@@ -46,7 +46,6 @@ export default function AuthForm({ mode, onSuccess }: Props) {
     setUsername("");
     setError(null);
 
-    // Ensure reset button is actually clickable
     setTimeout(() => firstInputRef.current?.focus(), 10);
   }
 
@@ -99,7 +98,6 @@ export default function AuthForm({ mode, onSuccess }: Props) {
           <div style={{ color: "#ff6b81", marginTop: 8, fontSize: 14 }}>{error}</div>
         )}
 
-        {/* BUTTON ROW */}
         <div 
           style={{
             display: "flex",
@@ -124,7 +122,7 @@ export default function AuthForm({ mode, onSuccess }: Props) {
             disabled={loading}
             style={{
               cursor: "pointer",
-              pointerEvents: "auto", // 🔥 ensures clicks work
+              pointerEvents: "auto",
             }}
           >
             Reset
