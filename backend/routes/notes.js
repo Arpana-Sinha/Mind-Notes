@@ -4,10 +4,8 @@ const auth = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// All routes here require auth
 router.use(auth);
 
-// GET /api/notes  -> list all notes of logged-in user
 router.get('/', async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user.id }).sort({ createdAt: -1 });
@@ -18,7 +16,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST /api/notes -> create note
 router.post('/', async (req, res) => {
   try {
     const { title = '', body = '', tags = [] } = req.body;
@@ -31,7 +28,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/notes/:id -> get single note (must belong to user)
 router.get('/:id', async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
@@ -44,7 +40,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// PUT /api/notes/:id -> update note
 router.put('/:id', async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
@@ -64,7 +59,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/notes/:id -> delete note
 router.delete('/:id', async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
